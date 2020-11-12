@@ -6,7 +6,8 @@ Vue.use(Vuex);
 import {
   INCREMENT_COUNT,
   INCREMENT_COUNT_BY,
-  SET_APP_DATA
+  SET_APP_DATA,
+  ADD_WISHLIST_ITEM
 } from "@/store/mutation-types";
 
 export default new Vuex.Store({
@@ -14,7 +15,21 @@ export default new Vuex.Store({
 
   state: {
     count: 1,
-    playgroundListData: []
+    playgroundListData: [],
+    userWishlist: [
+      {
+        id: 1,
+        name: "PS5",
+        url:
+          "https://www.amazon.co.uk/PlayStation-9395003-5-Console/dp/B08H95Y452/ref=sr_1_2?dchild=1&keywords=ps5&qid=1605199544&sr=8-2"
+      },
+      {
+        id: 2,
+        name: "New Graphics Card",
+        url:
+          "https://www.amazon.co.uk/3080-GeForce-RTXTM-VENTUS-10G/dp/B08HM4M621/ref=sr_1_1?dchild=1&keywords=RTx+3080&qid=1605199667&sr=8-1"
+      }
+    ]
   },
 
   mutations: {
@@ -27,6 +42,9 @@ export default new Vuex.Store({
     },
     [INCREMENT_COUNT_BY](state, { amount }) {
       state.count += parseInt(amount);
+    },
+    [ADD_WISHLIST_ITEM](state, { id, name, url }) {
+      state.userWishlist.push({ id, name, url });
     }
   },
 
@@ -41,6 +59,20 @@ export default new Vuex.Store({
           ]
         });
       }, 500);
+    },
+
+    async addWishlistItem(context, { name, url }) {
+      function getRandomInt(max) {
+        return Math.floor(Math.random() * Math.floor(max));
+      }
+      // fake backend
+      await setTimeout(() => {
+        context.commit(ADD_WISHLIST_ITEM, {
+          id: getRandomInt(1000), // fake backend id
+          name,
+          url
+        });
+      }, 300);
     }
   },
 
