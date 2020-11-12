@@ -3,12 +3,7 @@ import Vuex from "vuex";
 
 Vue.use(Vuex);
 
-import {
-  INCREMENT_COUNT,
-  INCREMENT_COUNT_BY,
-  SET_APP_DATA,
-  ADD_WISHLIST_ITEM
-} from "@/store/mutation-types";
+import types from "@/store/mutation-types";
 
 export default new Vuex.Store({
   strict: process.env.NODE_ENV !== "production",
@@ -33,17 +28,17 @@ export default new Vuex.Store({
   },
 
   mutations: {
-    [SET_APP_DATA](state, payload) {
+    [types.SET_APP_DATA](state, payload) {
       state.count = payload.initialCount;
       state.playgroundListData = payload.playgroundListData;
     },
-    [INCREMENT_COUNT](state) {
+    [types.INCREMENT_COUNT](state) {
       state.count += 1;
     },
-    [INCREMENT_COUNT_BY](state, { amount }) {
+    [types.INCREMENT_COUNT_BY](state, { amount }) {
       state.count += parseInt(amount);
     },
-    [ADD_WISHLIST_ITEM](state, { id, name, url }) {
+    [types.ADD_WISHLIST_ITEM](state, { id, name, url }) {
       state.userWishlist.push({ id, name, url });
     }
   },
@@ -51,7 +46,7 @@ export default new Vuex.Store({
   actions: {
     getAppState(context) {
       setTimeout(() => {
-        context.commit(SET_APP_DATA, {
+        context.commit(types.SET_APP_DATA, {
           initialCount: 42,
           playgroundListData: [
             { msg: "First message", foo: 1, bar: 2, baz: () => 3 },
@@ -67,7 +62,7 @@ export default new Vuex.Store({
       }
       // fake backend
       await setTimeout(() => {
-        context.commit(ADD_WISHLIST_ITEM, {
+        context.commit(types.ADD_WISHLIST_ITEM, {
           id: getRandomInt(1000), // fake backend id
           name,
           url

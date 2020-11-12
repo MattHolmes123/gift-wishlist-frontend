@@ -28,7 +28,7 @@
 
 <script>
 import { mapActions, mapMutations, mapState } from "vuex";
-import { INCREMENT_COUNT, INCREMENT_COUNT_BY } from "@/store/mutation-types";
+import types from "@/store/mutation-types";
 
 import PlaygroundList from "@/components/PlaygroundList.vue"; // @ is an alias to /src
 
@@ -41,8 +41,8 @@ export default {
   },
   methods: {
     ...mapMutations({
-      incrementCount: INCREMENT_COUNT,
-      incrementCountBy: INCREMENT_COUNT_BY
+      incrementCount: types.INCREMENT_COUNT,
+      incrementCountBy: types.INCREMENT_COUNT_BY
     }),
     ...mapActions(["getAppState"])
   },
