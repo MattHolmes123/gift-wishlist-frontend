@@ -1,0 +1,3 @@
+export const INCREMENT_COUNT = "INCREMENT_COUNT";
+export const INCREMENT_COUNT_BY = "INCREMENT_COUNT_BY";
+export const SET_APP_DATA = "SET_APP_DATA";
