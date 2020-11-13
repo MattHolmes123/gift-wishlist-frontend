@@ -31,7 +31,13 @@ const myWishlist = {
   component: () => import("../views/MyWishlist.vue")
 };
 
-const routes = [home, about, playground, myWishlist];
+const wishlistGroup = {
+  path: "/my-group",
+  name: "Wishlist group",
+  component: () => import("../views/MyGroup.vue")
+};
+
+const routes = [home, about, playground, myWishlist, wishlistGroup];
 
 const router = new VueRouter({
   routes

@@ -24,6 +24,40 @@ export default new Vuex.Store({
         url:
           "https://www.amazon.co.uk/3080-GeForce-RTXTM-VENTUS-10G/dp/B08HM4M621/ref=sr_1_1?dchild=1&keywords=RTx+3080&qid=1605199667&sr=8-1"
       }
+    ],
+    userGroup: [
+      {
+        id: 2,
+        name: "Sophie",
+        userWishList: [
+          {
+            id: 3,
+            name: "Golf bag",
+            url: "https://www.somegolfwebsite.com"
+          },
+          {
+            id: 4,
+            name: "Item 4",
+            url: "https://www.someurl.com"
+          }
+        ]
+      },
+      {
+        id: 3,
+        name: "Tim",
+        userWishList: [
+          {
+            id: 3,
+            name: "Resident evil 3",
+            url: "https://www.amazon.com/resident-evil-3-xbox"
+          },
+          {
+            id: 4,
+            name: "Item 5",
+            url: "https://www.someotherurl.com"
+          }
+        ]
+      }
     ]
   },
 

@@ -5,7 +5,8 @@
         <router-link to="/">Home</router-link> |
         <router-link to="/about">About</router-link> |
         <router-link to="/playground">Playground</router-link> |
-        <router-link to="/my-wishlist">My Wishlist</router-link>
+        <router-link to="/my-wishlist">My Wishlist</router-link> |
+        <router-link to="/my-group">Wishlist group</router-link>
       </div>
     </div>
     <div class="content">
