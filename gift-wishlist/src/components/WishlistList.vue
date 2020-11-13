@@ -1,7 +1,7 @@
 <template>
   <div class="list-container">
-    <!-- TODO: Change to ul and li -->
     <WishlistItem
+      class="wishlist-container"
       v-for="(item, index) in userWishlist"
       v-bind:key="item.id"
       v-bind:index="index"
@@ -29,4 +29,13 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.wishlist-container {
+  display: flex;
+  flex-grow: 1;
+  margin-bottom: 5px;
+  /* FIXME: Remove debug borders */
+  border-color: #2c3e50;
+  border-style: solid;
+}
+</style>

@@ -20,6 +20,6 @@ export default {
 <style scoped>
 p {
   text-align: left;
-  margin-left: 5rem;
+  margin-left: 1em;
 }
 </style>

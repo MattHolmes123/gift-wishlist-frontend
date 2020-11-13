@@ -2,11 +2,13 @@
   <div class="my-wishlist-container">
     <h3 class="component-header">My gift wishlist</h3>
     <!-- TODO: Refactor the inputs into an "add wishlist item" component -->
-    <label for="new-item">New item</label>
-    <input type="text" id="new-item" v-model="newItemName" />
-    <label for="new-item-url">URL: </label>
-    <input type="text" id="new-item-url" v-model="newItemURL" />
-    <button @click="addNewItem">Add item</button>
+    <div class="new-item-container">
+      <label for="new-item">New item</label>
+      <input type="text" id="new-item" v-model="newItemName" />
+      <label for="new-item-url">URL: </label>
+      <input type="text" id="new-item-url" v-model="newItemURL" />
+      <button @click="addNewItem">Add item</button>
+    </div>
     <h3 class="component-header">Wishlist items</h3>
     <WishlistList />
   </div>
@@ -47,9 +49,17 @@ export default {
 
 <style scoped>
 .my-wishlist-container {
-}
-.component-header {
+  margin-left: 1vw;
+  margin-right: 1vw;
   text-align: left;
-  margin-left: 5rem;
+}
+
+.component-header {
+}
+
+.new-item-container {
+  display: flex;
+  flex-grow: 1;
+  justify-content: left;
 }
 </style>
