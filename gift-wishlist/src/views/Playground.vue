@@ -1,7 +1,7 @@
 <template>
   <div class="playground">
     <p>Count: {{ count }}</p>
-    <button @click="getAppState">Initialise App</button>
+    <button @click="getPlaygroundState">Initialise App</button>
     <br />
     <button @click="incrementCount">I increment by one</button>
     <br />
@@ -18,6 +18,7 @@
     />
     <PlaygroundList
       v-for="(item, index) in playgroundListData"
+      v-bind:msg="item.msg"
       v-bind:foo="item.foo"
       v-bind:bar="item.bar"
       v-bind:baz="item.baz"
@@ -44,7 +45,7 @@ export default {
       incrementCount: types.INCREMENT_COUNT,
       incrementCountBy: types.INCREMENT_COUNT_BY
     }),
-    ...mapActions(["getAppState"])
+    ...mapActions(["getPlaygroundState"])
   },
   computed: {
     localComputed() {
