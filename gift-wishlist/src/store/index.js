@@ -4,6 +4,11 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 import types from "@/store/mutation-types";
+import PlaygroundApi from "@/store/playground-api";
+
+const API = {
+  playground: new PlaygroundApi(window.location.hostname, 8081)
+};
 
 export default new Vuex.Store({
   strict: process.env.NODE_ENV !== "production",
@@ -62,7 +67,7 @@ export default new Vuex.Store({
   },
 
   mutations: {
-    [types.SET_APP_DATA](state, payload) {
+    [types.SET_PLAYGROUND_STATE](state, payload) {
       state.count = payload.initialCount;
       state.playgroundListData = payload.playgroundListData;
     },
@@ -78,16 +83,17 @@ export default new Vuex.Store({
   },
 
   actions: {
-    getAppState(context) {
-      setTimeout(() => {
-        context.commit(types.SET_APP_DATA, {
-          initialCount: 42,
-          playgroundListData: [
-            { msg: "First message", foo: 1, bar: 2, baz: () => 3 },
-            { msg: "Second message", foo: 11, bar: 22, baz: () => 33 }
-          ]
-        });
-      }, 500);
+    async getPlaygroundState(context) {
+      const appData = await API.playground.fetchPlaygroundState();
+
+      const listData = appData.playground_list_data.map(
+        ({ msg, foo, bar, baz }) => ({ msg, foo, bar, baz: () => baz })
+      );
+
+      context.commit(types.SET_PLAYGROUND_STATE, {
+        initialCount: appData.count,
+        playgroundListData: listData
+      });
     },
 
     async addWishlistItem(context, { name, url }) {
