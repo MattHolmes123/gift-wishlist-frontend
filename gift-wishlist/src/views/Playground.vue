@@ -28,10 +28,13 @@
 </template>
 
 <script>
-import { mapActions, mapMutations, mapState } from "vuex";
+import { createNamespacedHelpers } from "vuex";
 import types from "@/store/mutation-types";
 
 import PlaygroundList from "@/components/PlaygroundList.vue"; // @ is an alias to /src
+const { mapActions, mapMutations, mapState } = createNamespacedHelpers(
+  "playground"
+);
 
 export default {
   name: "playground",
