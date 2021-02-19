@@ -15,7 +15,7 @@ export default new Vuex.Store({
     login: LoginModule
   },
 
-  state: {
+  state: () => ({
     userWishlist: [
       {
         id: 1,
@@ -64,7 +64,7 @@ export default new Vuex.Store({
         ]
       }
     ]
-  },
+  }),
 
   mutations: {
     [types.ADD_WISHLIST_ITEM](state, { id, name, url }) {
