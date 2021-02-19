@@ -3,11 +3,15 @@ import Vuex from "vuex";
 
 Vue.use(Vuex);
 
-import { PlaygroundModule } from "@/store/modules/playground";
+import { PlaygroundModule } from "@/store/modules/playground/index.js";
 import types from "@/store/mutation-types";
 
 export default new Vuex.Store({
   strict: process.env.NODE_ENV !== "production",
+
+  modules: {
+    playground: PlaygroundModule
+  },
 
   state: {
     userWishlist: [
@@ -80,9 +84,5 @@ export default new Vuex.Store({
         });
       }, 300);
     }
-  },
-
-  modules: {
-    playground: PlaygroundModule
   }
 });
