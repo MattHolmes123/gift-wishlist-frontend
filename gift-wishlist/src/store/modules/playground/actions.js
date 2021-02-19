@@ -4,7 +4,9 @@ import PlaygroundApi from "@/store/modules/playground/api";
 const API = new PlaygroundApi(window.location.hostname, 8081);
 
 export const actions = {
-  async getPlaygroundState({ state, commit, rootState }) {
+  async getPlaygroundState(context) {
+    const { state, commit, rootState } = context;
+
     console.log(state); // local state
     console.log(rootState); // root state
 

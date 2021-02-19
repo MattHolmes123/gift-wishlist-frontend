@@ -1,6 +1,7 @@
 <template>
   <div class="playground">
     <p>Count: {{ count }}</p>
+    <p>Local Computed: {{ localComputed }}</p>
     <button @click="getPlaygroundState">Initialise App</button>
     <br />
     <button @click="incrementCount">I increment by one</button>

@@ -10,6 +10,12 @@ const home = {
   component: Home
 };
 
+const login = {
+  path: "/login",
+  name: "Login",
+  component: () => import(/* webpackChunkName: "about" */ "../views/Login.vue")
+};
+
 const about = {
   path: "/about",
   name: "About",
@@ -37,7 +43,7 @@ const wishlistGroup = {
   component: () => import("../views/MyGroup.vue")
 };
 
-const routes = [home, about, playground, myWishlist, wishlistGroup];
+const routes = [home, login, about, playground, myWishlist, wishlistGroup];
 
 const router = new VueRouter({
   routes
