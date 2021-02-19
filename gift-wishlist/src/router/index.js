@@ -50,7 +50,20 @@ const wishlistGroup = {
   meta: { requiresAuth: true }
 };
 
-const routes = [login, home, about, playground, myWishlist, wishlistGroup];
+const catchAll = {
+  path: "/*",
+  redirect: home.path
+};
+
+const routes = [
+  login,
+  home,
+  about,
+  playground,
+  myWishlist,
+  wishlistGroup,
+  catchAll
+];
 
 const router = new VueRouter({
   routes
