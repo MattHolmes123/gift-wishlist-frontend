@@ -18,6 +18,8 @@ export const actions = {
 
     const { access_token: token } = await response.json();
     context.commit(types.LOG_IN_USER, { token });
+
+    await context.dispatch("user/getOwnUserProfile", {}, { root: true });
   },
 
   async testUserToken(context) {
@@ -31,3 +33,21 @@ export const actions = {
     console.log(data);
   }
 };
+
+// TODO Come back to this when better at vuex.
+// The problem being the "best" way to dispatch actions that are namespaced from another module
+// const getStoreAccessors = action => {
+//   // to make it generic later.
+//   const state_key = "login";
+//
+//   return context => {
+//     let { ...ctx } = context;
+//     // set state to be the user state.
+//     ctx.state = context.rootState[state_key];
+//
+//     action(ctx);
+//   };
+// };
+//
+// // TODO: Decide if I prefer exporting consts or actual functions
+// export const dispatchTestUserToken = getStoreAccessors(actions.testUserToken);

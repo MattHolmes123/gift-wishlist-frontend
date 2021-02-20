@@ -2,13 +2,14 @@
   <div id="app" class="grid-container">
     <div class="header">
       <div id="nav">
-        <router-link to="/">Home</router-link> |
-        <router-link to="/login">Login</router-link> |
-        <router-link to="/about">About</router-link> |
-        <router-link to="/playground">Playground</router-link> |
-        <router-link to="/my-wishlist">My Wishlist</router-link> |
+        <router-link to="/">Home</router-link>
+        <router-link to="/login">Login</router-link>
+        <router-link to="/about">About</router-link>
+        <router-link to="/playground">Playground</router-link>
+        <router-link to="/my-wishlist">My Wishlist</router-link>
         <router-link to="/my-group">Wishlist group</router-link>
       </div>
+      <UserProfileMenuItem />
     </div>
     <div class="content">
       <router-view />
@@ -18,6 +19,17 @@
     </div>
   </div>
 </template>
+
+<script>
+import UserProfileMenuItem from "@/components/UserProfileMenuItem";
+
+export default {
+  name: "App",
+  components: {
+    UserProfileMenuItem
+  }
+};
+</script>
 
 <style>
 #app {
@@ -61,13 +73,24 @@
   border-style: solid;
 }
 
-#nav {
-  padding: 30px;
+.header > * {
+  display: inline-flex;
+}
+.header > :first-child {
+  float: left;
+  margin-left: 1vw;
+  margin-top: 1vw;
+}
+.header > :last-child {
+  float: right;
+  margin-right: 1vw;
+  margin-top: 1vw;
 }
 
 #nav a {
   font-weight: bold;
   color: #2c3e50;
+  margin-right: 1vw;
 }
 
 #nav a.router-link-exact-active {
