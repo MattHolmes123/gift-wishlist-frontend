@@ -23,6 +23,7 @@ const { mapActions, mapState } = createNamespacedHelpers("login");
 
 export default {
   data() {
+    // TODO: Remove hardcoded data at some point.
     return {
       newUserName: "matt_holmes123@hotmail.com",
       newUserPassword: "password"
@@ -57,7 +58,7 @@ export default {
       return !this.newUserName || !this.newUserPassword;
     },
 
-    ...mapState(["isLoggedIn", "token"])
+    ...mapState(["isLoggedIn"])
   }
 };
 </script>

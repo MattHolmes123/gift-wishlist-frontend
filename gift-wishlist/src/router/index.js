@@ -73,7 +73,7 @@ const router = new VueRouter({
 // check if logged in, if not redirect to login page.
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    const authenticated = readIsLoggedIn(store);
+    const authenticated = readIsLoggedIn(store.state);
 
     if (!authenticated) {
       next({ path: login.path, query: { redirect: to.fullPath } });

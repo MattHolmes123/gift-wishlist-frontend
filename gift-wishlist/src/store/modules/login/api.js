@@ -1,12 +1,5 @@
 import { apiUrl } from "@/env";
-
-function authHeaders(token) {
-  const headers = {
-    Authorization: `Bearer ${token}`
-  };
-
-  return new Headers(headers);
-}
+import { authHeaders } from "@/utils";
 
 export default class LoginApi {
   constructor() {

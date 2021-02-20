@@ -1,13 +1,16 @@
 export const getters = {
   isLoggedIn(state) {
     return state.isLoggedIn === true;
+  },
+  token(state) {
+    return state.token;
   }
 };
 
-// TODO refactor and make more general as needed.
-// e.g. to pass in global state, getters etc.
 const getStoreAccessors = getter => {
-  return store => getter(store.state.login);
+  return rootState => getter(rootState.login);
 };
 
+// TODO: Decide if I prefer exporting consts or actual functions
 export const readIsLoggedIn = getStoreAccessors(getters.isLoggedIn);
+export const readToken = getStoreAccessors(getters.token);

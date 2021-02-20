@@ -1,18 +1,20 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
-Vue.use(Vuex);
-
 import { PlaygroundModule } from "@/store/modules/playground/index.js";
 import { LoginModule } from "@/store/modules/login/index.js";
 import types from "@/store/mutation-types";
+import { UserModule } from "@/store/modules/user/index.js";
+
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   strict: process.env.NODE_ENV !== "production",
 
   modules: {
     playground: PlaygroundModule,
-    login: LoginModule
+    login: LoginModule,
+    user: UserModule
   },
 
   state: () => ({

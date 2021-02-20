@@ -8,6 +8,10 @@ const types = {
   LOG_IN_USER: "LOG_IN_USER",
   LOG_OUT_USER: "LOG_OUT_USER",
 
+  // User mutations
+  SET_USER_PROFILE: "SET_USER_PROFILE",
+  CLEAR_USER_PROFILE: "CLEAR_USER_PROFILE",
+
   // Wishlist mutations
   ADD_WISHLIST_ITEM: "ADD_WISHLIST_ITEM"
 };
