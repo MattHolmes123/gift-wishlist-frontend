@@ -2,14 +2,18 @@
   <div id="app" class="grid-container">
     <div class="header">
       <div id="nav">
-        <router-link to="/">Home</router-link>
-        <router-link to="/login">Login</router-link>
-        <router-link to="/about">About</router-link>
-        <router-link to="/playground">Playground</router-link>
-        <router-link to="/my-wishlist">My Wishlist</router-link>
-        <router-link to="/my-group">Wishlist group</router-link>
+        <router-link v-if="!isLoggedIn" to="/login">Login</router-link>
+        <router-link v-if="isLoggedIn" to="/">Home</router-link>
+        <router-link v-if="isLoggedIn" to="/about">About</router-link>
+        <router-link v-if="isLoggedIn" to="/playground">Playground</router-link>
+        <router-link v-if="isLoggedIn" to="/my-wishlist"
+          >My Wishlist</router-link
+        >
+        <router-link v-if="isLoggedIn" to="/my-group"
+          >Wishlist group</router-link
+        >
       </div>
-      <UserProfileMenuItem />
+      <UserProfileMenuItem v-if="isLoggedIn" />
     </div>
     <div class="content">
       <router-view />
@@ -22,11 +26,16 @@
 
 <script>
 import UserProfileMenuItem from "@/components/UserProfileMenuItem";
+import { createNamespacedHelpers } from "vuex";
+const { mapState } = createNamespacedHelpers("login");
 
 export default {
   name: "App",
   components: {
     UserProfileMenuItem
+  },
+  computed: {
+    ...mapState(["isLoggedIn"])
   }
 };
 </script>
@@ -81,7 +90,8 @@ export default {
   margin-left: 1vw;
   margin-top: 1vw;
 }
-.header > :last-child {
+
+#user-profile {
   float: right;
   margin-right: 1vw;
   margin-top: 1vw;

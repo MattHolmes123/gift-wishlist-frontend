@@ -1,5 +1,5 @@
 import types from "@/store/mutation-types";
-import { defaultState } from "@/store/modules/user/index";
+import { defaultUserState } from "@/store/modules/user/index";
 
 export const mutations = {
   [types.SET_USER_PROFILE](
@@ -14,12 +14,9 @@ export const mutations = {
   },
 
   [types.CLEAR_USER_PROFILE](state) {
-    const defaultValues = defaultState();
-
-    state.id = defaultValues.id;
-    state.full_name = defaultValues.full_name;
-    state.email = defaultValues.email;
-    state.is_active = defaultValues.is_active;
-    state.is_superuser = defaultValues.is_superuser;
+    const defaults = defaultUserState();
+    for (const [key, value] of Object.entries(defaults)) {
+      state[key] = value;
+    }
   }
 };

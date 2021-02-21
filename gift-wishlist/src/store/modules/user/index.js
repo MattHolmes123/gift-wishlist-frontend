@@ -2,7 +2,7 @@ import { mutations } from "./mutations";
 import { getters } from "./getters";
 import { actions } from "./actions";
 
-export const defaultState = () => ({
+export const defaultUserState = () => ({
   id: 0,
   full_name: "",
   email: "",
@@ -12,7 +12,7 @@ export const defaultState = () => ({
 
 export const UserModule = {
   namespaced: true,
-  state: defaultState,
+  state: defaultUserState,
   mutations,
   actions,
   getters

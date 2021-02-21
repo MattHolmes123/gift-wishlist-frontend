@@ -26,7 +26,8 @@ export default {
     // TODO: Remove hardcoded data at some point.
     return {
       newUserName: "matt_holmes123@hotmail.com",
-      newUserPassword: "password"
+      newUserPassword: "password",
+      loginFailed: false
     };
   },
   name: "Login",
@@ -36,28 +37,26 @@ export default {
         username: this.newUserName,
         password: this.newUserPassword
       };
-      this.loginUser(payload).then(() => this.reset());
+      this.loginUser(payload).then(() => {
+        this.handleUserLogin();
+      });
     },
-    reset() {
-      // Only rest the username when we log in correctly.
+    handleUserLogin() {
       if (this.isLoggedIn) {
-        this.newUserName = "";
+        this.$router.push({ path: "home" });
       }
       this.newUserPassword = "";
+      this.loginFailed = true;
     },
     ...mapActions(["loginUser", "testUserToken"])
   },
   computed: {
-    loginFailed() {
-      return this.isLoggedIn === false;
-    },
     loginSuccess() {
       return this.isLoggedIn === true;
     },
     loginBtnDisabled() {
       return !this.newUserName || !this.newUserPassword;
     },
-
     ...mapState(["isLoggedIn"])
   }
 };
