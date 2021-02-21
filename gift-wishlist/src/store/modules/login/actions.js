@@ -22,6 +22,12 @@ export const actions = {
     await context.dispatch("user/getOwnUserProfile", {}, { root: true });
   },
 
+  async logoutUser(context) {
+    // Here is where we would delete the token from storage (see utils.js)
+    // removeLocalToken()
+    context.commit(types.LOG_OUT_USER);
+  },
+
   async testUserToken(context) {
     const token = context.state.token;
     const response = await API.testToken(token);
