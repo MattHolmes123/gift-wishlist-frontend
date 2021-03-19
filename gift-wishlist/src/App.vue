@@ -12,6 +12,9 @@
         <router-link v-if="isLoggedIn" to="/my-group"
           >Wishlist group</router-link
         >
+        <router-link v-if="isAdministrator" to="/all-wishlist-items"
+          >All Wishlist items</router-link
+        >
       </div>
       <UserProfileMenuItem v-if="isLoggedIn" />
     </div>
@@ -28,6 +31,7 @@
 import UserProfileMenuItem from "@/components/UserProfileMenuItem";
 import { createNamespacedHelpers } from "vuex";
 const { mapState } = createNamespacedHelpers("login");
+const { mapState: mapUserState } = createNamespacedHelpers("user");
 
 export default {
   name: "App",
@@ -35,7 +39,11 @@ export default {
     UserProfileMenuItem
   },
   computed: {
-    ...mapState(["isLoggedIn"])
+    isAdministrator() {
+      return this.isLoggedIn && this.is_superuser;
+    },
+    ...mapState(["isLoggedIn"]),
+    ...mapUserState(["is_superuser"])
   }
 };
 </script>

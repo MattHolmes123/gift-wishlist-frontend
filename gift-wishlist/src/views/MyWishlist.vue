@@ -10,13 +10,15 @@
       <button @click="addNewItem">Add item</button>
     </div>
     <h3 class="component-header">Wishlist items</h3>
-    <WishlistList />
+    <WishlistList v-bind:wishlist-items="userWishlist" />
   </div>
 </template>
 
 <script>
 import { mapActions } from "vuex";
 import WishlistList from "@/components/WishlistList";
+
+import { mapState } from "vuex";
 
 export default {
   data() {
@@ -43,6 +45,9 @@ export default {
       this.newItemURL = "";
     },
     ...mapActions(["addWishlistItem"])
+  },
+  computed: {
+    ...mapState(["userWishlist"])
   }
 };
 </script>

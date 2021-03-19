@@ -50,6 +50,15 @@ const wishlistGroup = {
   meta: { requiresAuth: true }
 };
 
+// TODO Read out to correctly define this as a async component (to include a loading component etc)
+// https://vuejs.org/v2/guide/components-dynamic-async.html#Handling-Loading-State
+const allWishlistItems = {
+  path: "/all-wishlist-items",
+  name: "Wishlist group",
+  component: () => import("../views/AllWishlistItems.vue"),
+  meta: { requiresAuth: true }
+};
+
 const catchAll = {
   path: "/*",
   redirect: home.path
@@ -62,6 +71,7 @@ const routes = [
   playground,
   myWishlist,
   wishlistGroup,
+  allWishlistItems,
   catchAll
 ];
 
