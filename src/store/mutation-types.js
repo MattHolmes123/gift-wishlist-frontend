@@ -14,7 +14,10 @@ const types = {
 
   // Wishlist mutations
   SET_WISHLIST_ITEMS: "SET_WISHLIST_ITEMS",
-  ADD_WISHLIST_ITEM: "ADD_WISHLIST_ITEM"
+  ADD_WISHLIST_ITEM: "ADD_WISHLIST_ITEM",
+
+  // Wishlist mutations for the logged in user
+  SET_USER_WISHLIST_ITEMS: "SET_USER_WISHLIST_ITEMS"
 };
 
 export default types;

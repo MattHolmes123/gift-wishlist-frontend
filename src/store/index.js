@@ -21,22 +21,7 @@ export default new Vuex.Store({
   },
 
   state: () => ({
-    userWishlist: [
-      {
-        id: 1,
-        name: "PS5",
-        url:
-          "https://www.amazon.co.uk/PlayStation-9395003-5-Console/dp/B08H95Y452/ref=sr_1_2?dchild=1&keywords=ps5&qid=1605199544&sr=8-2",
-        user_id: 1
-      },
-      {
-        id: 2,
-        name: "New Graphics Card",
-        url:
-          "https://www.amazon.co.uk/3080-GeForce-RTXTM-VENTUS-10G/dp/B08HM4M621/ref=sr_1_1?dchild=1&keywords=RTx+3080&qid=1605199667&sr=8-1",
-        user_id: 1
-      }
-    ],
+    // TODO: Remove this when implementing user groups
     userGroup: [
       {
         id: 2,
@@ -77,12 +62,14 @@ export default new Vuex.Store({
     ]
   }),
 
+  // TODO: remove this when doing real api
   mutations: {
     [types.ADD_WISHLIST_ITEM](state, { id, name, url }) {
       state.userWishlist.push({ id, name, url });
     }
   },
 
+  // TODO: remove this when doing real api
   actions: {
     async addWishlistItem(context, { name, url }) {
       function getRandomInt(max) {

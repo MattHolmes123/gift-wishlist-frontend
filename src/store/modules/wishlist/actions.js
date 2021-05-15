@@ -13,11 +13,24 @@ export const actions = {
     const response = await API.getAllWishlistItems(token);
 
     if (!response.ok) {
-      console.log("Failed to load wishlist items");
+      console.error("Failed to load all wishlist items");
       return;
     }
 
     const wishlistItems = await response.json();
     await context.commit(types.SET_WISHLIST_ITEMS, { wishlistItems });
+  },
+
+  async getMyWishlist(context) {
+    const token = readToken(context.rootState);
+    const response = await API.getMyWishlist(token);
+
+    if (!response.ok) {
+      console.error("Failed to load user wishlist items");
+      return;
+    }
+
+    const userWishlist = await response.json();
+    await context.commit(types.SET_USER_WISHLIST_ITEMS, { userWishlist });
   }
 };
