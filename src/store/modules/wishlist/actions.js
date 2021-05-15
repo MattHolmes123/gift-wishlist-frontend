@@ -1,6 +1,7 @@
 import types from "@/store/mutation-types";
 import WishlistApi from "@/store/modules/wishlist/api";
 import { readToken } from "@/store/modules/login/getters";
+import { readUserId } from "@/store/modules/user/getters";
 
 const API = new WishlistApi();
 
@@ -32,5 +33,24 @@ export const actions = {
 
     const userWishlist = await response.json();
     await context.commit(types.SET_USER_WISHLIST_ITEMS, { userWishlist });
+  },
+
+  async addWishlistItem(context, { name, url }) {
+    const token = readToken(context.rootState);
+    const user_id = readUserId(context.rootState);
+    const response = await API.addWishlistItem(token, name, url, user_id);
+
+    if (!response.ok) {
+      console.error("Failed to add a wishlist item");
+      return;
+    }
+
+    const savedItem = await response.json();
+
+    context.commit(types.ADD_WISHLIST_ITEM, {
+      id: savedItem.id,
+      name: savedItem.name,
+      url: savedItem.url
+    });
   }
 };

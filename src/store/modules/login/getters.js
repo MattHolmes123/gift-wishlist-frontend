@@ -12,5 +12,9 @@ const getStoreAccessors = getter => {
 };
 
 // TODO: Decide if I prefer exporting consts or actual functions
+
+// Call `readIsLoggedIn` with the store and it will give you the value.
 export const readIsLoggedIn = getStoreAccessors(getters.isLoggedIn);
+
+// Call `readToken` with the store and it will give you the value.
 export const readToken = getStoreAccessors(getters.token);

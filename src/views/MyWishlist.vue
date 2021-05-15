@@ -15,13 +15,9 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
 import WishlistList from "@/components/WishlistList";
 import { createNamespacedHelpers } from "vuex";
-// FIXME: Rename
-const { mapActions: mapWishlistActions, mapState } = createNamespacedHelpers(
-  "wishlist"
-);
+const { mapActions, mapState } = createNamespacedHelpers("wishlist");
 
 export default {
   data() {
@@ -56,8 +52,7 @@ export default {
       this.newItemName = "";
       this.newItemURL = "";
     },
-    ...mapActions(["addWishlistItem"]),
-    ...mapWishlistActions(["getMyWishlist"])
+    ...mapActions(["addWishlistItem", "getMyWishlist"])
   },
   computed: {
     ...mapState(["userWishlist"])

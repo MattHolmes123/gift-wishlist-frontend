@@ -36,4 +36,15 @@ export default class WishlistApi {
       headers: authHeaders(token)
     });
   }
+
+  async addWishlistItem(token, name, url, user_id) {
+    const endpoint = this.endpoints.createWishlistItem;
+    let item = { name, url, user_id };
+
+    return await fetch(endpoint, {
+      method: "POST",
+      headers: authHeaders(token),
+      body: JSON.stringify(item)
+    });
+  }
 }
