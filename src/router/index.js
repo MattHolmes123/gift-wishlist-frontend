@@ -9,7 +9,7 @@ Vue.use(VueRouter);
 const login = {
   path: "/login",
   name: "Login",
-  component: () => import(/* webpackChunkName: "about" */ "../views/Login.vue")
+  component: () => import(/* webpackChunkName: "login" */ "../views/Login.vue")
 };
 
 const home = {
@@ -47,7 +47,7 @@ const wishlistGroup = {
 // https://vuejs.org/v2/guide/components-dynamic-async.html#Handling-Loading-State
 const allWishlistItems = {
   path: "/all-wishlist-items",
-  name: "Wishlist group",
+  name: "All Wishlist Items",
   component: () => import("../views/AllWishlistItems.vue"),
   meta: { requiresAuth: true }
 };

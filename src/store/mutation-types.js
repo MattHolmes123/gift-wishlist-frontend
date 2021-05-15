@@ -13,11 +13,10 @@ const types = {
   CLEAR_USER_PROFILE: "CLEAR_USER_PROFILE",
 
   // Wishlist mutations
+  // TODO: Condense these two in to one mutation
   SET_WISHLIST_ITEMS: "SET_WISHLIST_ITEMS",
-  ADD_WISHLIST_ITEM: "ADD_WISHLIST_ITEM",
-
-  // Wishlist mutations for the logged in user
-  SET_USER_WISHLIST_ITEMS: "SET_USER_WISHLIST_ITEMS"
+  SET_USER_WISHLIST_ITEMS: "SET_USER_WISHLIST_ITEMS",
+  ADD_WISHLIST_ITEM: "ADD_WISHLIST_ITEM"
 };
 
 export default types;

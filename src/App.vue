@@ -4,7 +4,6 @@
       <div id="nav">
         <router-link v-if="!isLoggedIn" to="/login">Login</router-link>
         <router-link v-if="isLoggedIn" to="/">Home</router-link>
-        <router-link v-if="isLoggedIn" to="/about">About</router-link>
         <router-link v-if="isLoggedIn" to="/playground">Playground</router-link>
         <router-link v-if="isLoggedIn" to="/my-wishlist"
           >My Wishlist</router-link

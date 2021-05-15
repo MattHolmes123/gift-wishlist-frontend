@@ -1,8 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
-import types from "@/store/mutation-types";
-
 import { PlaygroundModule } from "@/store/modules/playground/index.js";
 import { LoginModule } from "@/store/modules/login/index.js";
 import { UserModule } from "@/store/modules/user/index.js";
@@ -61,28 +59,7 @@ export default new Vuex.Store({
       }
     ]
   }),
-
-  // TODO: remove this when doing real api
-  mutations: {
-    [types.ADD_WISHLIST_ITEM](state, { id, name, url }) {
-      state.userWishlist.push({ id, name, url });
-    }
-  },
-
-  // TODO: remove this when doing real api
-  actions: {
-    async addWishlistItem(context, { name, url }) {
-      function getRandomInt(max) {
-        return Math.floor(Math.random() * Math.floor(max));
-      }
-      // fake backend
-      await setTimeout(() => {
-        context.commit(types.ADD_WISHLIST_ITEM, {
-          id: getRandomInt(1000), // fake backend id
-          name,
-          url
-        });
-      }, 300);
-    }
-  }
+  mutations: {},
+  actions: {},
+  getters: {}
 });

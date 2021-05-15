@@ -1,6 +1,7 @@
 export function authHeaders(token) {
   const headers = {
-    Authorization: `Bearer ${token}`
+    Authorization: `Bearer ${token}`,
+    "Content-Type": "application/json"
   };
 
   return new Headers(headers);
