@@ -17,8 +17,11 @@
 <script>
 import { mapActions } from "vuex";
 import WishlistList from "@/components/WishlistList";
-
-import { mapState } from "vuex";
+import { createNamespacedHelpers } from "vuex";
+// FIXME: Rename
+const { mapActions: mapWishlistActions, mapState } = createNamespacedHelpers(
+  "wishlist"
+);
 
 export default {
   data() {
@@ -31,6 +34,15 @@ export default {
   components: {
     WishlistList
   },
+  /**
+   * loads all wishlist items.
+   * TODO: Look in how to do it properly
+   * https://vuejs.org/v2/guide/components-dynamic-async.html#Handling-Loading-State
+   */
+  async created() {
+    await this.getMyWishlist();
+  },
+
   methods: {
     addNewItem() {
       this.addWishlistItem({
@@ -44,7 +56,8 @@ export default {
       this.newItemName = "";
       this.newItemURL = "";
     },
-    ...mapActions(["addWishlistItem"])
+    ...mapActions(["addWishlistItem"]),
+    ...mapWishlistActions(["getMyWishlist"])
   },
   computed: {
     ...mapState(["userWishlist"])
