@@ -23,7 +23,7 @@ export default {
     await this.getAllWishListItems();
   },
 
-  name: "All Wishlist items",
+  name: "all-wishlist-items",
   components: {
     WishlistList
   },
